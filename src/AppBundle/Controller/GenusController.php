@@ -17,13 +17,13 @@ class GenusController extends Controller
     public function showAction($genusName)
 
     {      
-         
-           $html=$this->render('genus/show.html.twig', array(
+         #$genusName=$this->container->has('templating');
+          return $this->render('genus/show.html.twig', array(
            	'name'=>$genusName ,
            	));
            
          
-         return new Response($html);
+       
     }
  
 
