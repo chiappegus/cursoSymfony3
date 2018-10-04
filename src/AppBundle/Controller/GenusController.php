@@ -18,8 +18,16 @@ class GenusController extends Controller
 
     {      
          #$genusName=$this->container->has('templating');
+         #
+          $notes = [
+            'Octopus asked me a riddle, outsmarted me',
+            'I counted 8 legs... as they wrapped around me',
+            'Inked!'
+        ];
+
           return $this->render('genus/show.html.twig', array(
            	'name'=>$genusName ,
+           	'notes'=>    $notes,
            	));
            
          

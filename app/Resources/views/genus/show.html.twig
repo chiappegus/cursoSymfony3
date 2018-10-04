@@ -4,10 +4,48 @@
 
 
         {% block body %}
+<hr>
+ <p>  
+{{name}}
+<hr>
 
-<p>  
-    {{name}}
-</p>
+{{dump()}} </p>
+
+  <p>  
+{{'expresion'}}
+
+{% set foo = 'bar' %}
+
+    {# displays bar #}
+{{ foo }}
+
+
+<hr>
+{% for note in notes %}
+    {{note|upper }}
+{% endfor %}
+
+<br>
+<hr>
+<br>
+{% for note in notes %}
+    {{note|lower }}
+{% endfor %}
+
+
+ </p>
+<hr>
+<ul>
+    
+{% for note in notes%}
+    <li>{{note}}</li>
+{% endfor %}
+
+</ul>
+
+
+
+
 
         {% endblock %}
        
