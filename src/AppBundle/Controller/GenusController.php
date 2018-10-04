@@ -9,11 +9,11 @@ use Symfony\Component\Routing\Annotation\Route;
 class GenusController extends Controller
 {
     /**
-     * @Route("/genus", name="genus")
+     * @Route("/genus/{genusName}", name="genus")
      */
-    public function showAction()
+    public function showAction($genusName)
     {
-        return new Response(' under the Sea!');
+        return new Response('the genus : ' . $genusName);
     }
 
 }
