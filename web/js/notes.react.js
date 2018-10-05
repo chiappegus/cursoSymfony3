@@ -4,21 +4,19 @@ var NoteSection = React.createClass({
             notes: []
         }
     },
-
     componentDidMount: function() {
         this.loadNotesFromServer();
         setInterval(this.loadNotesFromServer, 2000);
     },
-
     loadNotesFromServer: function() {
         $.ajax({
-            url: '/genus/octopus/notes',
+            //url: '/genus/octopus/notes',
+            url: this.props.url ,
             success: function (data) {
                 this.setState({notes: data.notes});
             }.bind(this)
         });
     },
-
     render: function() {
         return (
             <div>
@@ -31,7 +29,6 @@ var NoteSection = React.createClass({
         );
     }
 });
-
 var NoteList = React.createClass({
     render: function() {
         var noteNodes = this.props.notes.map(function(note) {
@@ -39,7 +36,6 @@ var NoteList = React.createClass({
                 <NoteBox username={note.username} avatarUri={note.avatarUri} date={note.date} key={note.id}>{note.note}</NoteBox>
             );
         });
-
         return (
             <section id="cd-timeline">
                 {noteNodes}
@@ -47,7 +43,6 @@ var NoteList = React.createClass({
         );
     }
 });
-
 var NoteBox = React.createClass({
     render: function() {
         return (
@@ -64,5 +59,4 @@ var NoteBox = React.createClass({
         );
     }
 });
-
 window.NoteSection = NoteSection;

@@ -4,8 +4,8 @@
 
 {% block body %}
 
-   {# <a href="/genus/{{name}}/notes"> Json Notes</a>#}
-     <a href={{path('genus_show_notes',{'genusName':name})}}> Json Notes</a>
+   {# <a href="/genus/{{name}}/notes"> Json Notes</a>
+     <a href={{path('genus_show_notes',{'genusName':name})}}> Json Notes</a>#}
     <h2 class="genus-name">{{ name }}</h2>
     <div class="sea-creature-container">
         <div class="genus-photo"></div>
@@ -19,12 +19,17 @@
                 <dd>Octopuses can change the color of their body in just three-tenths of a second!</dd>
             </dl>
         </div>
-    </div>
+    </div> 
+
+    <div id="js-notes-wrapper"></div>
+
+
+    {# 
     <div class="notes-container">
         <h2 class="notes-header">Notes</h2>
         <div><i class="fa fa-plus plus-btn"></i></div>
     </div>
-    {# 
+   
      <section id="cd-timeline">
         {% for note in /genus/{{name}}/notes %}
             <div class="cd-timeline-block">
@@ -40,4 +45,26 @@
         {% endfor %}
     </section>
      #}
+{% endblock %}
+
+{% block javascripts %}
+    
+{{parent()}}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.3/react.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.3/react-dom.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
+
+ 
+
+    <script type="text/babel" src="{{ asset('js/notes.react.js') }}"></script>
+    <script type="text/babel">
+       var notesUrl = '{{path('genus_show_notes',{'genusName':name})}}';
+        
+        ReactDOM.render(
+          <NoteSection url={notesUrl} />,
+          document.getElementById('js-notes-wrapper')
+        
+        );
+    </script>
+
 {% endblock %}
