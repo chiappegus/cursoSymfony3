@@ -35,7 +35,7 @@ class GenusController extends Controller
     
    
     /**
-    * @Route("/genus/{genusName}/notes" , name="genus1")
+    * @Route("/genus/{genusName}/notes" , name="genus_show_notes")
     * @Method("GET")
     */
     public function getNoteAction()
